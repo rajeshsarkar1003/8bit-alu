@@ -1,0 +1,50 @@
+`timescale 1ns / 1ps
+
+module tb();
+  //inputs
+  reg [7:0] A,B;
+  reg [2:0] OPC;
+  
+  //opcode
+  wire [15:0] result;
+  wire flagz,flagc;
+  reg[2:0] i;
+  
+  //instantiate
+  
+  alu a1(.op1(A), .op2(B), .opcode(opcode), .flagz(flagz), .flagc(flagc), .result(result));
+  
+  //initial condititons
+  
+  
+  
+  initial 
+    begin
+  A=8'h0;
+  B=8'h0;
+  OPC=3'b0;
+      #100;
+      A=8'h6f;
+          B=8'h5a;
+  
+      for (i=0; i<8; i++)
+        begin
+          
+        i=$random;
+           OPC=i;
+         
+       
+          #20;
+       
+      
+        
+          $monitor("Opcode=%b, result=%b,flaz=",OPC,result);
+          
+        end
+    end
+endmodule
+      
+
+
+      
+      
